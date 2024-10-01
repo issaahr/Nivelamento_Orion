@@ -1,0 +1,33 @@
+# Node modules
+node_modules/
+
+# TypeScript build artifacts
+dist/
+build/
+out/
+
+# Logs
+*.log
+
+# Environment variables
+.env
+.env.local
+
+# VS Code specific files
+.vscode/
+
+# Operating System specific files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+*.swp
+*.swo
+
+# NPM package lock file
+package-lock.json
+
+# Yarn lock file
+yarn.lock
+
+#
+appTeste.ts
