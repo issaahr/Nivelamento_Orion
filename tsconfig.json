@@ -2,6 +2,9 @@
     "compilerOptions": {
         "target": "es5", 
         "outDir": "jsScripts/",
-        "sourceMap": true
+        "sourceMap": true,          
+        "strict": true,  
+        "esModuleInterop": true,  
+         "lib": ["es2015", "es5", "DOM"]
     }    
 }
