@@ -11,11 +11,17 @@ let lista: Array<Pessoa> = [
     {"id" : 4, "name": "Nicolau Copérnico", "bio": "Nicolau Copérnico foi um astrônomo e matemático polonês que desenvolveu a teoria heliocêntrica do Sistema Solar."}
     ];
 
+const imprimirTodasBiografias = () => {
+    lista.forEach(pessoa => {console.log(`ID: ${pessoa.id}, Nome: ${pessoa.name}, Bio: ${pessoa.bio} \n`)})
+}    
+
 
 /*********************************
 *   VERSÃO PARADIGMA FUNCIONAL   *
 *********************************/ 
 //Consulta bio a partir do ID
+
+
 const consultaBioPeloID = (id: number) => {
     const pessoa = lista.find(item => item.id === id)
     return pessoa ? pessoa.bio : "ID não localizado"
@@ -44,16 +50,16 @@ const alteracaoPeloID = (id: number, novoNome?: string, novaBio?:string) => {
     })
 }
 
-const imprimirTodasBiografias = () => {
-    lista.forEach(pessoa => {console.log(`ID: ${pessoa.id}, Nome: ${pessoa.name}, Bio: ${pessoa.bio}`)})
-}
 
 // Demonstração
 imprimirTodasBiografias()
 
-console.log(consultaBioPeloID(1)) // bio de Ada Lovelace
-console.log(consultaNomePeloID(5)) //id não localizado
-console.log(consultaNomePeloID(2)) // Nome Alan Turing 
+const idConsultaBio = 1
+console.log(`Bio: ${consultaBioPeloID(idConsultaBio)}`) // bio de Ada Lovelace
+
+const idConsultaNome = 2
+console.log(`Nome: ${consultaNomePeloID(idConsultaNome)}`) // nome Alan Turing 
+
 
 lista = apagaItemPeloID(4) // Apaga o item 4
 imprimirTodasBiografias()
@@ -65,15 +71,71 @@ const bioAtualizada = "Albert Einstein, foi um físico teórico que desenvolveu 
 lista = alteracaoPeloID(idAlvoAtualizacao, nomeAtualizado, bioAtualizada)
 imprimirTodasBiografias()
 
+
+
 /*********************************
 *   VERSÃO PARADIGMA IMPERATIVO   *
 *********************************/ 
+//Consulta bio a partir de um ID
+function consultaBioPeloIDModoImperativo(id:number): string{
+    for (let i = 0; i < lista.length; i++){
+        if (lista[i].id === id){
+            return lista[i].bio
+        }
+    }
+    return "ID não localizado"
+}
 
+//Consulta nome a partir de um ID
+function consultaNomePeloIDModoImperativo(id:number): string{
+    for (let i = 0; i < lista.length; i++){
+        if (lista[i].id === id){
+            return lista[i].name
+        }
+    }
+    return "ID não localizado"
+}
 
- /*
-    a) Crie uma função que retorne a bio do id passado
-    b) Crie uma função que retorne o name do id passado
-    c) Crie uma função que apague um item da lista a partir de um id passado
-    d) Crie uma função que altere a bio ou o name a partir de um id passado
-    e) Demonstre todas as funções com o paradigma funcional e com o imperativo
-    */
+//Apaga itemm a partir de um ID
+function apagaItemPeloIDModoImperativo(id:number): void{
+    for (let i = 0; i < lista.length; i++){
+        if (lista[i].id === id){
+            lista.splice(i,1)
+            break
+        }
+    }
+}
+
+//Altera bio ou nome a partir do ID
+function alteracaoPeloIDModoImperativo(id: number, novoNome?: string | null , novaBio?:string | null): void{
+    let idEncontrado = false;
+
+    for (let i = 0; i< lista.length; i++){
+        if (lista[i].id == id){
+            idEncontrado = true
+            if (novoNome !== null && novoNome !== undefined){
+                lista[i].name = novoNome
+            }
+            if (novaBio !== null && novaBio !== undefined){
+                lista[i].bio = novaBio
+            }            
+            break;
+        }
+    }
+    if(!idEncontrado){
+        console.log(`ID não localizado`)
+    }
+}
+    
+
+// Demonstração
+imprimirTodasBiografias()
+
+console.log(`Bio: ${consultaBioPeloIDModoImperativo(1)}`) // bio de Ada Lovelace
+console.log(`Nome: ${consultaNomePeloIDModoImperativo(2)}`) // Nome Alan Turing 
+
+apagaItemPeloIDModoImperativo(1) // Apaga o item 1
+imprimirTodasBiografias()
+
+alteracaoPeloIDModoImperativo(3, "Charles Darwin", "Charles Darwin, foi um Naturalista que propôs a teoria da evolução através da seleção natural.")
+imprimirTodasBiografias()

@@ -16,6 +16,9 @@ var lista = [
     { "id": 3, "name": "Nikola Tesla", "bio": "Nikola Tesla foi um inventor, engenheiro eletrotécnico e engenheiro mecânico sérvio, mais conhecido por suas contribuições ao projeto do moderno sistema de fornecimento de eletricidade em corrente alternada." },
     { "id": 4, "name": "Nicolau Copérnico", "bio": "Nicolau Copérnico foi um astrônomo e matemático polonês que desenvolveu a teoria heliocêntrica do Sistema Solar." }
 ];
+var imprimirTodasBiografias = function () {
+    lista.forEach(function (pessoa) { console.log("ID: ".concat(pessoa.id, ", Nome: ").concat(pessoa.name, ", Bio: ").concat(pessoa.bio, " \n")); });
+};
 /*********************************
 *   VERSÃO PARADIGMA FUNCIONAL   *
 *********************************/
@@ -40,14 +43,12 @@ var alteracaoPeloID = function (id, novoNome, novaBio) {
         return item;
     });
 };
-var imprimirTodasBiografias = function () {
-    lista.forEach(function (pessoa) { console.log("ID: ".concat(pessoa.id, ", Nome: ").concat(pessoa.name, ", Bio: ").concat(pessoa.bio)); });
-};
 // Demonstração
 imprimirTodasBiografias();
-console.log(consultaBioPeloID(1)); // bio de Ada Lovelace
-console.log(consultaNomePeloID(5)); //id não localizado
-console.log(consultaNomePeloID(2)); // Nome Alan Turing 
+var idConsultaBio = 1;
+console.log("Bio: ".concat(consultaBioPeloID(idConsultaBio))); // bio de Ada Lovelace
+var idConsultaNome = 2;
+console.log("Nome: ".concat(consultaNomePeloID(idConsultaNome))); // nome Alan Turing 
 lista = apagaItemPeloID(4); // Apaga o item 4
 imprimirTodasBiografias();
 var idAlvoAtualizacao = 3;
@@ -58,11 +59,58 @@ imprimirTodasBiografias();
 /*********************************
 *   VERSÃO PARADIGMA IMPERATIVO   *
 *********************************/
-/*
-   a) Crie uma função que retorne a bio do id passado
-   b) Crie uma função que retorne o name do id passado
-   c) Crie uma função que apague um item da lista a partir de um id passado
-   d) Crie uma função que altere a bio ou o name a partir de um id passado
-   e) Demonstre todas as funções com o paradigma funcional e com o imperativo
-   */ 
+//Consulta bio a partir de um ID
+function consultaBioPeloIDModoImperativo(id) {
+    for (var i = 0; i < lista.length; i++) {
+        if (lista[i].id === id) {
+            return lista[i].bio;
+        }
+    }
+    return "ID não localizado";
+}
+//Consulta nome a partir de um ID
+function consultaNomePeloIDModoImperativo(id) {
+    for (var i = 0; i < lista.length; i++) {
+        if (lista[i].id === id) {
+            return lista[i].name;
+        }
+    }
+    return "ID não localizado";
+}
+//Apaga itemm a partir de um ID
+function apagaItemPeloIDModoImperativo(id) {
+    for (var i = 0; i < lista.length; i++) {
+        if (lista[i].id === id) {
+            lista.splice(i, 1);
+            break;
+        }
+    }
+}
+//Altera bio ou nome a partir do ID
+function alteracaoPeloIDModoImperativo(id, novoNome, novaBio) {
+    var idEncontrado = false;
+    for (var i = 0; i < lista.length; i++) {
+        if (lista[i].id == id) {
+            idEncontrado = true;
+            if (novoNome !== null && novoNome !== undefined) {
+                lista[i].name = novoNome;
+            }
+            if (novaBio !== null && novaBio !== undefined) {
+                lista[i].bio = novaBio;
+            }
+            break;
+        }
+    }
+    if (!idEncontrado) {
+        console.log("ID n\u00E3o localizado");
+    }
+}
+// Demonstração
+imprimirTodasBiografias();
+console.log("Bio: ".concat(consultaBioPeloIDModoImperativo(1))); // bio de Ada Lovelace
+console.log("Nome: ".concat(consultaNomePeloIDModoImperativo(2))); // Nome Alan Turing 
+apagaItemPeloIDModoImperativo(1); // Apaga o item 1
+imprimirTodasBiografias();
+alteracaoPeloIDModoImperativo(3, "Charles Darwin", "Charles Darwin, foi um Naturalista que propôs a teoria da evolução através da seleção natural.");
+imprimirTodasBiografias();
 //# sourceMappingURL=biografia.js.map
