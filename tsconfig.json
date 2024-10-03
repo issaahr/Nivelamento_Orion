@@ -1,17 +1,18 @@
 {
     "compilerOptions": {
-      "target": "es6",
-      "module": "commonjs",
-      "outDir": "./jsScripts",
-      "rootDir": "./src",
-      "strict": true,
-      "esModuleInterop": true
+        "target": "es6",
+        "module": "commonjs",
+        "outDir": "./jsScripts",
+        "rootDir": "./src",
+        "strict": true,
+        "esModuleInterop": true,
+        "lib": ["es2015", "DOM"]
     },
     "include": [
-      "src/**/*.ts"
+        "src/**/*.ts"
     ],
     "exclude": [
-      "node_modules",
-      "**/*.spec.ts"
+        "node_modules",
+        "**/*.spec.ts"
     ]
 }
