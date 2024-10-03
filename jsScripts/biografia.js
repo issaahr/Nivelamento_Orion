@@ -16,25 +16,52 @@ var lista = [
     { "id": 3, "name": "Nikola Tesla", "bio": "Nikola Tesla foi um inventor, engenheiro eletrotécnico e engenheiro mecânico sérvio, mais conhecido por suas contribuições ao projeto do moderno sistema de fornecimento de eletricidade em corrente alternada." },
     { "id": 4, "name": "Nicolau Copérnico", "bio": "Nicolau Copérnico foi um astrônomo e matemático polonês que desenvolveu a teoria heliocêntrica do Sistema Solar." }
 ];
+/**
+ * Imprime todas as biografias da lista no console.
+ * Para cada pessoa na lista, esta função exibe o ID, nome e biografia.
+ * @returns Não retorna nada (void)
+ */
 var imprimirTodasBiografias = function () {
     lista.forEach(function (pessoa) { console.log("ID: ".concat(pessoa.id, ", Nome: ").concat(pessoa.name, ", Bio: ").concat(pessoa.bio, " \n")); });
 };
 /*********************************
 *   VERSÃO PARADIGMA FUNCIONAL   *
 *********************************/
-//Consulta bio a partir do ID
+/**
+ * Consulta a biografia de uma pessoa pelo ID.
+ *
+ * @param id - o ID da pessoa a ser consultada.
+ * @returns A biografia da pessoa correspondente ao ID, ou `ID não localizado` se o ID não for encontrado.
+ */
 var consultaBioPeloID = function (id) {
     var pessoa = lista.find(function (item) { return item.id === id; });
     return pessoa ? pessoa.bio : "ID não localizado";
 };
-//Consulta nome a partir do ID
+/**
+ * Consulta o nome de uma pessoa pelo seu ID.
+ *
+ * @param  id - O ID da pessoa a ser consultada.
+ * @returns O nome da pessoa correspondente ao ID fornecido, ou `ID não localizado` se o ID não for encontrado.
+ */
 var consultaNomePeloID = function (id) {
     var pessoa = lista.find(function (item) { return item.id === id; });
     return pessoa ? pessoa.name : "ID não localizado";
 };
-//Apaga item a partir do ID
+/**
+ * Remove um item da lista pelo seu ID.
+ *
+ * @param id - O ID do item a ser removido.
+ * @returns Uma nova lista sem o item com o ID especificado.
+ */
 var apagaItemPeloID = function (id) { return lista.filter(function (item) { return item.id !== id; }); };
-//Altera bio ou o nome a partir do ID
+/**
+ * Altera o nome e/ou a biografia de uma pessoa na lista com base no ID fornecido. Caso ele exista.
+ *
+ * @param id - O ID da pessoa a ser alterada.
+ * @param novoNome - O novo nome a ser atribuído à pessoa (opcional).
+ * @param  novaBio - A nova biografia a ser atribuída à pessoa (opcional).
+ * @returns Uma nova lista de pessoas com as alterações aplicadas.
+ */
 var alteracaoPeloID = function (id, novoNome, novaBio) {
     return lista.map(function (item) {
         if (item.id === id) {
@@ -59,7 +86,12 @@ imprimirTodasBiografias();
 /*********************************
 *   VERSÃO PARADIGMA IMPERATIVO   *
 *********************************/
-//Consulta bio a partir de um ID
+/**
+ * Consulta a biografia de uma pessoa pelo ID.
+ *
+ * @param id - o ID da pessoa a ser consultada.
+ * @returns A biografia da pessoa correspondente ao ID, ou `ID não localizado` se o ID não for encontrado.
+ */
 function consultaBioPeloIDModoImperativo(id) {
     for (var i = 0; i < lista.length; i++) {
         if (lista[i].id === id) {
@@ -68,7 +100,12 @@ function consultaBioPeloIDModoImperativo(id) {
     }
     return "ID não localizado";
 }
-//Consulta nome a partir de um ID
+/**
+ * Consulta o nome de uma pessoa pelo seu ID.
+ *
+ * @param  id - O ID da pessoa a ser consultada.
+ * @returns O nome da pessoa correspondente ao ID fornecido, ou `ID não localizado` se o ID não for encontrado.
+ */
 function consultaNomePeloIDModoImperativo(id) {
     for (var i = 0; i < lista.length; i++) {
         if (lista[i].id === id) {
@@ -77,7 +114,11 @@ function consultaNomePeloIDModoImperativo(id) {
     }
     return "ID não localizado";
 }
-//Apaga itemm a partir de um ID
+/**
+ * Apaga um item da lista pelo ID
+ *
+ * @param id - O ID do item que será removido.
+ */
 function apagaItemPeloIDModoImperativo(id) {
     for (var i = 0; i < lista.length; i++) {
         if (lista[i].id === id) {
@@ -86,7 +127,14 @@ function apagaItemPeloIDModoImperativo(id) {
         }
     }
 }
-//Altera bio ou nome a partir do ID
+/**
+ * Altera o nome e/ou a biografia de uma pessoa na lista com base no ID fornecido.
+ *
+ * @param id - O ID da pessoa a ser alterada.
+ * @param novoNome - O novo nome a ser atribuído à pessoa (opcional).
+ * @param  novaBio - A nova biografia a ser atribuída à pessoa (opcional).
+ * @returns A lista de pessoas com as alterações aplicadas.
+ */
 function alteracaoPeloIDModoImperativo(id, novoNome, novaBio) {
     var idEncontrado = false;
     for (var i = 0; i < lista.length; i++) {

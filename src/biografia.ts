@@ -11,44 +11,69 @@ let lista: Array<Pessoa> = [
     {"id" : 4, "name": "Nicolau Copérnico", "bio": "Nicolau Copérnico foi um astrônomo e matemático polonês que desenvolveu a teoria heliocêntrica do Sistema Solar."}
     ];
 
-const imprimirTodasBiografias = () => {
+/**
+ * Imprime todas as biografias da lista no console.
+ * Para cada pessoa na lista, esta função exibe o ID, nome e biografia.
+ * @returns Não retorna nada (void)
+ */
+const imprimirTodasBiografias = (): void => {
     lista.forEach(pessoa => {console.log(`ID: ${pessoa.id}, Nome: ${pessoa.name}, Bio: ${pessoa.bio} \n`)})
 }    
-
 
 /*********************************
 *   VERSÃO PARADIGMA FUNCIONAL   *
 *********************************/ 
-//Consulta bio a partir do ID
-
-
-const consultaBioPeloID = (id: number) => {
+/**
+ * Consulta a biografia de uma pessoa pelo ID.
+ *
+ * @param id - o ID da pessoa a ser consultada.
+ * @returns A biografia da pessoa correspondente ao ID, ou `ID não localizado` se o ID não for encontrado.
+ */
+const consultaBioPeloID = (id: number): string => {
     const pessoa = lista.find(item => item.id === id)
     return pessoa ? pessoa.bio : "ID não localizado"
 }
 
-//Consulta nome a partir do ID
-const consultaNomePeloID = (id: number) => {
+/**
+ * Consulta o nome de uma pessoa pelo seu ID.
+ *
+ * @param  id - O ID da pessoa a ser consultada.
+ * @returns O nome da pessoa correspondente ao ID fornecido, ou `ID não localizado` se o ID não for encontrado.
+ */
+const consultaNomePeloID = (id: number) : string => {
     const pessoa = lista.find(item => item.id === id)
     return pessoa ? pessoa.name : "ID não localizado"
 }
 
-//Apaga item a partir do ID
-const apagaItemPeloID = (id:number) => lista.filter(item => item.id !== id)
+/**
+ * Remove um item da lista pelo seu ID.
+ *
+ * @param id - O ID do item a ser removido.
+ * @returns Uma nova lista sem o item com o ID especificado.
+ */
+const apagaItemPeloID = (id:number) : Array<Pessoa> => lista.filter(item => item.id !== id)
 
-//Altera bio ou o nome a partir do ID
-const alteracaoPeloID = (id: number, novoNome?: string, novaBio?:string) => {
+
+/**
+ * Altera o nome e/ou a biografia de uma pessoa na lista com base no ID fornecido. Caso ele exista.
+ *
+ * @param id - O ID da pessoa a ser alterada.
+ * @param novoNome - O novo nome a ser atribuído à pessoa (opcional).
+ * @param  novaBio - A nova biografia a ser atribuída à pessoa (opcional).
+ * @returns Uma nova lista de pessoas com as alterações aplicadas.
+ */
+const alteracaoPeloID = (id: number, novoNome?: string, novaBio?: string): Array<Pessoa> => {
     return lista.map(item => {
-        if (item.id === id){
+        if (item.id === id) {
             return {
                 ...item,
                 name: novoNome !== undefined ? novoNome : item.name,
                 bio: novaBio !== undefined ? novaBio : item.bio,
-            }
+            };
         }
-        return item
-    })
-}
+        return item;
+    });
+};
 
 
 // Demonstração
@@ -76,7 +101,12 @@ imprimirTodasBiografias()
 /*********************************
 *   VERSÃO PARADIGMA IMPERATIVO   *
 *********************************/ 
-//Consulta bio a partir de um ID
+/**
+ * Consulta a biografia de uma pessoa pelo ID.
+ *
+ * @param id - o ID da pessoa a ser consultada.
+ * @returns A biografia da pessoa correspondente ao ID, ou `ID não localizado` se o ID não for encontrado.
+ */
 function consultaBioPeloIDModoImperativo(id:number): string{
     for (let i = 0; i < lista.length; i++){
         if (lista[i].id === id){
@@ -86,7 +116,12 @@ function consultaBioPeloIDModoImperativo(id:number): string{
     return "ID não localizado"
 }
 
-//Consulta nome a partir de um ID
+/**
+ * Consulta o nome de uma pessoa pelo seu ID.
+ *
+ * @param  id - O ID da pessoa a ser consultada.
+ * @returns O nome da pessoa correspondente ao ID fornecido, ou `ID não localizado` se o ID não for encontrado.
+ */
 function consultaNomePeloIDModoImperativo(id:number): string{
     for (let i = 0; i < lista.length; i++){
         if (lista[i].id === id){
@@ -96,7 +131,12 @@ function consultaNomePeloIDModoImperativo(id:number): string{
     return "ID não localizado"
 }
 
-//Apaga itemm a partir de um ID
+
+/**
+ * Apaga um item da lista pelo ID 
+ *
+ * @param id - O ID do item que será removido.
+ */
 function apagaItemPeloIDModoImperativo(id:number): void{
     for (let i = 0; i < lista.length; i++){
         if (lista[i].id === id){
@@ -106,7 +146,14 @@ function apagaItemPeloIDModoImperativo(id:number): void{
     }
 }
 
-//Altera bio ou nome a partir do ID
+/**
+ * Altera o nome e/ou a biografia de uma pessoa na lista com base no ID fornecido.
+ *
+ * @param id - O ID da pessoa a ser alterada.
+ * @param novoNome - O novo nome a ser atribuído à pessoa (opcional).
+ * @param  novaBio - A nova biografia a ser atribuída à pessoa (opcional).
+ * @returns A lista de pessoas com as alterações aplicadas.
+ */
 function alteracaoPeloIDModoImperativo(id: number, novoNome?: string | null , novaBio?:string | null): void{
     let idEncontrado = false;
 
