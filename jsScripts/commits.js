@@ -33,7 +33,7 @@ function formatarDataHora(dataString) {
  */
 function buscarCommits() {
     return __awaiter(this, void 0, void 0, function* () {
-        const url = 'https://api.github.com/repos/issaahr/Nivelamento_Orion/commits';
+        const url = 'https://api.github.com/repos/issaahr/Nivelamento_Orion/commits?sha=feature-3';
         try {
             const resposta = yield fetch(url);
             const commits = yield resposta.json();
