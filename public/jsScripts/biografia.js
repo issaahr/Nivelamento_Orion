@@ -1,16 +1,4 @@
-"use strict";
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-var lista = [
+export let lista = [
     { "id": 1, "name": "Ada Lovelace", "bio": "Ada Lovelace, foi uma matemática e escritora inglesa reconhecida por ter escrito o primeiro algoritmo para ser processado por uma máquina" },
     { "id": 2, "name": "Alan Turing", "bio": "Alan Turing foi um matemático, cientista da computação, lógico, criptoanalista, filósofo e biólogo teórico britânico, ele é amplamente considerado o pai da ciência da computação teórica e da inteligência artificial" },
     { "id": 3, "name": "Nikola Tesla", "bio": "Nikola Tesla foi um inventor, engenheiro eletrotécnico e engenheiro mecânico sérvio, mais conhecido por suas contribuições ao projeto do moderno sistema de fornecimento de eletricidade em corrente alternada." },
@@ -21,8 +9,8 @@ var lista = [
  * Para cada pessoa na lista, esta função exibe o ID, nome e biografia.
  * @returns Não retorna nada (void)
  */
-var imprimirTodasBiografias = function () {
-    lista.forEach(function (pessoa) { console.log("ID: ".concat(pessoa.id, ", Nome: ").concat(pessoa.name, ", Bio: ").concat(pessoa.bio, " \n")); });
+const imprimirTodasBiografias = () => {
+    lista.forEach(pessoa => { console.log(`ID: ${pessoa.id}, Nome: ${pessoa.name}, Bio: ${pessoa.bio} \n`); });
 };
 /*********************************
 *   VERSÃO PARADIGMA FUNCIONAL   *
@@ -33,8 +21,8 @@ var imprimirTodasBiografias = function () {
  * @param id - o ID da pessoa a ser consultada.
  * @returns A biografia da pessoa correspondente ao ID, ou `ID não localizado` se o ID não for encontrado.
  */
-var consultaBioPeloID = function (id) {
-    var pessoa = lista.find(function (item) { return item.id === id; });
+const consultaBioPeloID = (id) => {
+    const pessoa = lista.find(item => item.id === id);
     return pessoa ? pessoa.bio : "ID não localizado";
 };
 /**
@@ -43,8 +31,8 @@ var consultaBioPeloID = function (id) {
  * @param  id - O ID da pessoa a ser consultada.
  * @returns O nome da pessoa correspondente ao ID fornecido, ou `ID não localizado` se o ID não for encontrado.
  */
-var consultaNomePeloID = function (id) {
-    var pessoa = lista.find(function (item) { return item.id === id; });
+const consultaNomePeloID = (id) => {
+    const pessoa = lista.find(item => item.id === id);
     return pessoa ? pessoa.name : "ID não localizado";
 };
 /**
@@ -53,7 +41,7 @@ var consultaNomePeloID = function (id) {
  * @param id - O ID do item a ser removido.
  * @returns Uma nova lista sem o item com o ID especificado.
  */
-var apagaItemPeloID = function (id) { return lista.filter(function (item) { return item.id !== id; }); };
+const apagaItemPeloID = (id) => lista.filter(item => item.id !== id);
 /**
  * Altera o nome e/ou a biografia de uma pessoa na lista com base no ID fornecido. Caso ele exista.
  *
@@ -62,27 +50,36 @@ var apagaItemPeloID = function (id) { return lista.filter(function (item) { retu
  * @param  novaBio - A nova biografia a ser atribuída à pessoa (opcional).
  * @returns Uma nova lista de pessoas com as alterações aplicadas.
  */
-var alteracaoPeloID = function (id, novoNome, novaBio) {
-    return lista.map(function (item) {
+const alteracaoPeloID = (id, novoNome, novaBio) => {
+    return lista.map(item => {
         if (item.id === id) {
-            return __assign(__assign({}, item), { name: novoNome !== undefined ? novoNome : item.name, bio: novaBio !== undefined ? novaBio : item.bio });
+            return Object.assign(Object.assign({}, item), { name: novoNome !== undefined ? novoNome : item.name, bio: novaBio !== undefined ? novaBio : item.bio });
         }
         return item;
     });
 };
+/*
 // Demonstração
-imprimirTodasBiografias();
-var idConsultaBio = 1;
-console.log("Bio: ".concat(consultaBioPeloID(idConsultaBio))); // bio de Ada Lovelace
-var idConsultaNome = 2;
-console.log("Nome: ".concat(consultaNomePeloID(idConsultaNome))); // nome Alan Turing 
-lista = apagaItemPeloID(4); // Apaga o item 4
-imprimirTodasBiografias();
-var idAlvoAtualizacao = 3;
-var nomeAtualizado = "Albert Einstein";
-var bioAtualizada = "Albert Einstein, foi um físico teórico que desenvolveu a teoria da relatividade e revolucionou a física moderna.";
-lista = alteracaoPeloID(idAlvoAtualizacao, nomeAtualizado, bioAtualizada);
-imprimirTodasBiografias();
+imprimirTodasBiografias()
+
+const idConsultaBio = 1
+console.log(`Bio: ${consultaBioPeloID(idConsultaBio)}`) // bio de Ada Lovelace
+
+const idConsultaNome = 2
+console.log(`Nome: ${consultaNomePeloID(idConsultaNome)}`) // nome Alan Turing
+
+
+lista = apagaItemPeloID(4) // Apaga o item 4
+imprimirTodasBiografias()
+
+const idAlvoAtualizacao = 3
+const nomeAtualizado = "Albert Einstein"
+const bioAtualizada = "Albert Einstein, foi um físico teórico que desenvolveu a teoria da relatividade e revolucionou a física moderna."
+
+lista = alteracaoPeloID(idAlvoAtualizacao, nomeAtualizado, bioAtualizada)
+imprimirTodasBiografias()
+
+*/
 /*********************************
 *   VERSÃO PARADIGMA IMPERATIVO   *
 *********************************/
@@ -92,8 +89,8 @@ imprimirTodasBiografias();
  * @param id - o ID da pessoa a ser consultada.
  * @returns A biografia da pessoa correspondente ao ID, ou `ID não localizado` se o ID não for encontrado.
  */
-function consultaBioPeloIDModoImperativo(id) {
-    for (var i = 0; i < lista.length; i++) {
+export function consultaBioPeloIDModoImperativo(id) {
+    for (let i = 0; i < lista.length; i++) {
         if (lista[i].id === id) {
             return lista[i].bio;
         }
@@ -106,8 +103,8 @@ function consultaBioPeloIDModoImperativo(id) {
  * @param  id - O ID da pessoa a ser consultada.
  * @returns O nome da pessoa correspondente ao ID fornecido, ou `ID não localizado` se o ID não for encontrado.
  */
-function consultaNomePeloIDModoImperativo(id) {
-    for (var i = 0; i < lista.length; i++) {
+export function consultaNomePeloIDModoImperativo(id) {
+    for (let i = 0; i < lista.length; i++) {
         if (lista[i].id === id) {
             return lista[i].name;
         }
@@ -119,8 +116,8 @@ function consultaNomePeloIDModoImperativo(id) {
  *
  * @param id - O ID do item que será removido.
  */
-function apagaItemPeloIDModoImperativo(id) {
-    for (var i = 0; i < lista.length; i++) {
+export function apagaItemPeloIDModoImperativo(id) {
+    for (let i = 0; i < lista.length; i++) {
         if (lista[i].id === id) {
             lista.splice(i, 1);
             break;
@@ -135,30 +132,34 @@ function apagaItemPeloIDModoImperativo(id) {
  * @param  novaBio - A nova biografia a ser atribuída à pessoa (opcional).
  * @returns A lista de pessoas com as alterações aplicadas.
  */
-function alteracaoPeloIDModoImperativo(id, novoNome, novaBio) {
-    var idEncontrado = false;
-    for (var i = 0; i < lista.length; i++) {
+export function alteracaoPeloIDModoImperativo(id, novoNome, novaBio) {
+    let idEncontrado = false;
+    for (let i = 0; i < lista.length; i++) {
         if (lista[i].id == id) {
             idEncontrado = true;
-            if (novoNome !== null && novoNome !== undefined) {
+            if (novoNome !== undefined && (novoNome === null || novoNome === void 0 ? void 0 : novoNome.trim()) !== "") {
                 lista[i].name = novoNome;
             }
-            if (novaBio !== null && novaBio !== undefined) {
+            if (novaBio !== undefined && novaBio.trim() !== "") {
                 lista[i].bio = novaBio;
             }
             break;
         }
     }
     if (!idEncontrado) {
-        console.log("ID n\u00E3o localizado");
+        console.log(`ID não localizado`);
     }
 }
+/*
 // Demonstração
-imprimirTodasBiografias();
-console.log("Bio: ".concat(consultaBioPeloIDModoImperativo(1))); // bio de Ada Lovelace
-console.log("Nome: ".concat(consultaNomePeloIDModoImperativo(2))); // Nome Alan Turing 
-apagaItemPeloIDModoImperativo(1); // Apaga o item 1
-imprimirTodasBiografias();
-alteracaoPeloIDModoImperativo(3, "Charles Darwin", "Charles Darwin, foi um Naturalista que propôs a teoria da evolução através da seleção natural.");
-imprimirTodasBiografias();
-//# sourceMappingURL=biografia.js.map
+imprimirTodasBiografias()
+
+console.log(`Bio: ${consultaBioPeloIDModoImperativo(1)}`) // bio de Ada Lovelace
+console.log(`Nome: ${consultaNomePeloIDModoImperativo(2)}`) // Nome Alan Turing
+
+apagaItemPeloIDModoImperativo(1) // Apaga o item 1
+imprimirTodasBiografias()
+
+alteracaoPeloIDModoImperativo(3, "Charles Darwin", "Charles Darwin, foi um Naturalista que propôs a teoria da evolução através da seleção natural.")
+imprimirTodasBiografias()
+*/ 

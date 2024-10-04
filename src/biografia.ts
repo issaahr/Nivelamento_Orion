@@ -1,10 +1,10 @@
-interface Pessoa{
+export interface Pessoa{
     id: number;
     name: string;
     bio: string;
 }
 
-let lista: Array<Pessoa> = [
+export let lista: Array<Pessoa> = [
     {"id" : 1, "name": "Ada Lovelace", "bio" : "Ada Lovelace, foi uma matemática e escritora inglesa reconhecida por ter escrito o primeiro algoritmo para ser processado por uma máquina"},
     {"id" : 2, "name": "Alan Turing", "bio" : "Alan Turing foi um matemático, cientista da computação, lógico, criptoanalista, filósofo e biólogo teórico britânico, ele é amplamente considerado o pai da ciência da computação teórica e da inteligência artificial"},
     {"id" : 3, "name": "Nikola Tesla", "bio" : "Nikola Tesla foi um inventor, engenheiro eletrotécnico e engenheiro mecânico sérvio, mais conhecido por suas contribuições ao projeto do moderno sistema de fornecimento de eletricidade em corrente alternada."},
@@ -75,7 +75,7 @@ const alteracaoPeloID = (id: number, novoNome?: string, novaBio?: string): Array
     });
 };
 
-
+/*
 // Demonstração
 imprimirTodasBiografias()
 
@@ -96,7 +96,7 @@ const bioAtualizada = "Albert Einstein, foi um físico teórico que desenvolveu 
 lista = alteracaoPeloID(idAlvoAtualizacao, nomeAtualizado, bioAtualizada)
 imprimirTodasBiografias()
 
-
+*/
 
 /*********************************
 *   VERSÃO PARADIGMA IMPERATIVO   *
@@ -107,7 +107,7 @@ imprimirTodasBiografias()
  * @param id - o ID da pessoa a ser consultada.
  * @returns A biografia da pessoa correspondente ao ID, ou `ID não localizado` se o ID não for encontrado.
  */
-function consultaBioPeloIDModoImperativo(id:number): string{
+export function consultaBioPeloIDModoImperativo(id:number): string{
     for (let i = 0; i < lista.length; i++){
         if (lista[i].id === id){
             return lista[i].bio
@@ -122,7 +122,7 @@ function consultaBioPeloIDModoImperativo(id:number): string{
  * @param  id - O ID da pessoa a ser consultada.
  * @returns O nome da pessoa correspondente ao ID fornecido, ou `ID não localizado` se o ID não for encontrado.
  */
-function consultaNomePeloIDModoImperativo(id:number): string{
+export function consultaNomePeloIDModoImperativo(id:number): string{
     for (let i = 0; i < lista.length; i++){
         if (lista[i].id === id){
             return lista[i].name
@@ -137,7 +137,7 @@ function consultaNomePeloIDModoImperativo(id:number): string{
  *
  * @param id - O ID do item que será removido.
  */
-function apagaItemPeloIDModoImperativo(id:number): void{
+export function apagaItemPeloIDModoImperativo(id:number): void{
     for (let i = 0; i < lista.length; i++){
         if (lista[i].id === id){
             lista.splice(i,1)
@@ -154,16 +154,16 @@ function apagaItemPeloIDModoImperativo(id:number): void{
  * @param  novaBio - A nova biografia a ser atribuída à pessoa (opcional).
  * @returns A lista de pessoas com as alterações aplicadas.
  */
-function alteracaoPeloIDModoImperativo(id: number, novoNome?: string | null , novaBio?:string | null): void{
+export function alteracaoPeloIDModoImperativo(id: number, novoNome?: string | undefined , novaBio?:string | undefined): void{
     let idEncontrado = false;
 
     for (let i = 0; i< lista.length; i++){
         if (lista[i].id == id){
             idEncontrado = true
-            if (novoNome !== null && novoNome !== undefined){
+            if (novoNome !== undefined && novoNome?.trim() !== ""){
                 lista[i].name = novoNome
             }
-            if (novaBio !== null && novaBio !== undefined){
+            if (novaBio !== undefined && novaBio.trim() !== ""){
                 lista[i].bio = novaBio
             }            
             break;
@@ -174,7 +174,7 @@ function alteracaoPeloIDModoImperativo(id: number, novoNome?: string | null , no
     }
 }
     
-
+/*
 // Demonstração
 imprimirTodasBiografias()
 
@@ -186,3 +186,4 @@ imprimirTodasBiografias()
 
 alteracaoPeloIDModoImperativo(3, "Charles Darwin", "Charles Darwin, foi um Naturalista que propôs a teoria da evolução através da seleção natural.")
 imprimirTodasBiografias()
+*/
