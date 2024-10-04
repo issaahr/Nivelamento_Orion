@@ -1,11 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Questão das biografias</title>
+    <title>Biografias</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script type="module" src="../jsScripts/biografiaWeb.js"defer>
+    </script>
 </head>
+
 <body>
-    
+    <div class="card">
+
+        <a href="index.html">
+            <button id="voltarIndex">Voltar para a página inicial</button>
+        </a>
+
+        <h1>Acervo de Biografias de Cientistas</h1>
+
+        <button id="botaoMostrarBiografias">Mostrar todas as biografias</button>
+        <div id="todasBiografias"></div>
+
+        <hr>
+
+        <h2>Consultar Biografia pelo ID</h2>
+        <input type="text" id="inputConsultaBioID" placeholder="Digite o ID">
+        <button id="botaoConsultaBio">Consultar</button>
+        <div id="resultadoConsultaBio"></div>
+
+        <hr>
+
+        <h2>Consultar Nome pelo ID</h2>
+        <input type="text" id="inputConsultaNomeID" placeholder="Digite o ID">
+        <button id="botaoConsultaNome">Consultar</button>
+        <div id="resultadoConsultaNome"></div>
+
+        <hr>
+
+        <h2>Remover Pessoa pelo ID</h2>
+        <input type="text" id="inputRemoveID" placeholder="Digite o ID">
+        <button id="botaoRemover">Remover</button>
+        <div id="resultadoRemocao"></div>
+
+        <hr>
+
+        <h2>Alterar Nome/Biografia pelo ID</h2>
+        <input type="text" id="inputAlterarID" placeholder="Digite o ID">
+        <input type="text" id="inputNovoNome" placeholder="Novo Nome (opcional)">
+        <input type="text" id="inputNovaBio" placeholder="Nova Biografia (opcional)">
+        <button id="botaoAlterar">Alterar</button>
+        <div id="resultadoAlteracao"></div>
+    </div>
 </body>
+
 </html>

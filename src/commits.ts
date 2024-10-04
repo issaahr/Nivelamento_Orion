@@ -21,11 +21,11 @@ interface CommitDoGitHub {
  */
 function formatarDataHora(dataString: string): string {
     const data = new Date(dataString)
-    const dia = String(data.getDate()).padStart(2, '0')
-    const mes = String(data.getMonth() + 1).padStart(2, '0')
-    const ano = data.getFullYear()
-    const horas = String(data.getHours()).padStart(2, '0')
-    const minutos = String(data.getMinutes()).padStart(2, '0')
+    const dia: string = String(data.getDate()).padStart(2, '0')
+    const mes: string = String(data.getMonth() + 1).padStart(2, '0')
+    const ano: number = data.getFullYear()
+    const horas: string = String(data.getHours()).padStart(2, '0')
+    const minutos: string = String(data.getMinutes()).padStart(2, '0')
 
     return `${dia}/${mes}/${ano} ${horas}:${minutos}`
 }
@@ -35,13 +35,13 @@ function formatarDataHora(dataString: string): string {
  * 
  * @async
  * @function buscarCommits
- * @returns Uma promessa que é resolvida quando os commits são buscados e impressos.
+ * @returns Uma promessa que é resolvida quando os commits são encontrados e impressos.
  * @throws Vai enviar uma mensagem de erro ao console caso a busca falhe.
  */
 async function buscarCommits(): Promise<void> {
-    const url = 'https://api.github.com/repos/issaahr/Nivelamento_Orion/commits'
+    const url: string = 'https://api.github.com/repos/issaahr/Nivelamento_Orion/commits'
     try {
-        const resposta = await fetch(url)
+        const resposta: Response = await fetch(url)
         const commits: CommitDoGitHub[] = await resposta.json()
         imprimirCommits(commits)
     } catch (erro) {
@@ -63,12 +63,8 @@ function imprimirCommits(commits: CommitDoGitHub[]): void {
     
     if (listaDeCommits) { 
         commits.forEach(commit => {
-            const itemDaLista = document.createElement('li')
-
-            
-            const dataFormatada = formatarDataHora(commit.commit.author.date)
-
-            
+            const itemDaLista: HTMLElement = document.createElement('li')            
+            const dataFormatada: string = formatarDataHora(commit.commit.author.date)            
             itemDaLista.textContent = `Commit feito por ${commit.commit.author.name} em ${dataFormatada}: ${commit.commit.message}`
             listaDeCommits.appendChild(itemDaLista)
         })

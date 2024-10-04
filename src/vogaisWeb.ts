@@ -1,4 +1,7 @@
-import { validaString, contaVogais } from './questaoVogais.js'
+import { 
+    validaString,
+    contaVogais 
+} from './questaoVogais.js'
 /**
  * Imprime o resultado da contagem de vogais em uma palavra
  * @remarks

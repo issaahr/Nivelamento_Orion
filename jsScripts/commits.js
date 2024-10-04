@@ -28,7 +28,7 @@ function formatarDataHora(dataString) {
  *
  * @async
  * @function buscarCommits
- * @returns Uma promessa que é resolvida quando os commits são buscados e impressos.
+ * @returns Uma promessa que é resolvida quando os commits são encontrados e impressos.
  * @throws Vai enviar uma mensagem de erro ao console caso a busca falhe.
  */
 function buscarCommits() {
