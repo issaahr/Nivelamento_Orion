@@ -137,10 +137,10 @@ export function alteracaoPeloIDModoImperativo(id, novoNome, novaBio) {
     for (let i = 0; i < lista.length; i++) {
         if (lista[i].id == id) {
             idEncontrado = true;
-            if (novoNome !== null && novoNome !== undefined) {
+            if (novoNome !== undefined && (novoNome === null || novoNome === void 0 ? void 0 : novoNome.trim()) !== "") {
                 lista[i].name = novoNome;
             }
-            if (novaBio !== null && novaBio !== undefined) {
+            if (novaBio !== undefined && novaBio.trim() !== "") {
                 lista[i].bio = novaBio;
             }
             break;

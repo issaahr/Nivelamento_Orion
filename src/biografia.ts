@@ -154,16 +154,16 @@ export function apagaItemPeloIDModoImperativo(id:number): void{
  * @param  novaBio - A nova biografia a ser atribuída à pessoa (opcional).
  * @returns A lista de pessoas com as alterações aplicadas.
  */
-export function alteracaoPeloIDModoImperativo(id: number, novoNome?: string | null , novaBio?:string | null): void{
+export function alteracaoPeloIDModoImperativo(id: number, novoNome?: string | undefined , novaBio?:string | undefined): void{
     let idEncontrado = false;
 
     for (let i = 0; i< lista.length; i++){
         if (lista[i].id == id){
             idEncontrado = true
-            if (novoNome !== null && novoNome !== undefined){
+            if (novoNome !== undefined && novoNome?.trim() !== ""){
                 lista[i].name = novoNome
             }
-            if (novaBio !== null && novaBio !== undefined){
+            if (novaBio !== undefined && novaBio.trim() !== ""){
                 lista[i].bio = novaBio
             }            
             break;
