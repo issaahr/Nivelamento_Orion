@@ -39,7 +39,7 @@ function formatarDataHora(dataString: string): string {
  * @throws Vai enviar uma mensagem de erro ao console caso a busca falhe.
  */
 async function buscarCommits(): Promise<void> {
-    const url: string = 'https://api.github.com/repos/issaahr/Nivelamento_Orion/commits?sha=feature-3'
+    const url: string = 'https://api.github.com/repos/issaahr/Nivelamento_Orion/commits'
     try {
         const resposta: Response = await fetch(url)
         const commits: CommitDoGitHub[] = await resposta.json()
