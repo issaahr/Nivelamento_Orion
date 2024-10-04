@@ -1,4 +1,3 @@
-"use strict";
 /**
  * Imprime o resultado da contagem de vogais em uma palavra
  * @remarks
@@ -8,7 +7,7 @@
  * @param vogaisContadas - O número de vogais contadas na palavra
  * @returns Não retorna valor (void)
  */
-function imprimeResultado(palavra, vogaisContadas) {
+export function imprimeResultado(palavra, vogaisContadas) {
     console.log(`A palavra ${palavra} tem: ${vogaisContadas} vogais`);
 }
 /**
@@ -18,7 +17,7 @@ function imprimeResultado(palavra, vogaisContadas) {
  * @param stringTestada - A string que será validada
  * @returns Retorna `true` se for válida, ou `false` se for inválida
  */
-function validaString(stringTestada) {
+export function validaString(stringTestada) {
     return /^[a-zA-ZÀ-ÿ]+$/.test(stringTestada);
 }
 /**
@@ -30,7 +29,7 @@ function validaString(stringTestada) {
  * @param palavra - A palavra na qual contar as vogais.
  * @returns O número de vogais na palavra fornecida.
  */
-function contaVogais(palavra) {
+export function contaVogais(palavra) {
     const vogaisBase = "AÁÂÃEÉÊIÍÎOÓÔÕUÚÛ";
     let contador = 0;
     for (let letra of palavra.toUpperCase()) {
@@ -40,14 +39,20 @@ function contaVogais(palavra) {
     }
     return contador;
 }
-//cenario a)
-const palavraPreDefinida = "Liara";
-const vogaisContadas = contaVogais(palavraPreDefinida);
-imprimeResultado(palavraPreDefinida, vogaisContadas);
-//cenario b) 
-let palavraInput;
-do {
-    palavraInput = prompt("Digite a palavra a ser contada: ") || "";
-} while (!validaString(palavraInput));
-let vogaisContadasInput = contaVogais(palavraInput);
-imprimeResultado(palavraInput, vogaisContadasInput);
+/*
+* Seção de demonstraçoes
+* cenario a)
+* const palavraPreDefinida: string = "Liara"
+* const vogaisContadas: number = contaVogais(palavraPreDefinida)
+* imprimeResultado(palavraPreDefinida, vogaisContadas)
+*
+* cenario b)
+* let palavraInput: string
+*
+* do {
+*    palavraInput = prompt("Digite a palavra a ser contada: ") || ""
+* } while(!validaString(palavraInput))
+*
+* let vogaisContadasInput = contaVogais(palavraInput)
+* imprimeResultado(palavraInput, vogaisContadasInput)
+*/ 

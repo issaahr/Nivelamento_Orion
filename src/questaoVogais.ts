@@ -7,7 +7,7 @@
  * @param vogaisContadas - O número de vogais contadas na palavra 
  * @returns Não retorna valor (void)
  */
-function imprimeResultado(palavra: string, vogaisContadas: number): void{
+export function imprimeResultado(palavra: string, vogaisContadas: number): void{
     console.log(`A palavra ${palavra} tem: ${vogaisContadas} vogais`)
 }
 
@@ -18,7 +18,7 @@ function imprimeResultado(palavra: string, vogaisContadas: number): void{
  * @param stringTestada - A string que será validada
  * @returns Retorna `true` se for válida, ou `false` se for inválida
  */
-function validaString(stringTestada : string): boolean {
+export function validaString(stringTestada : string): boolean {
     return /^[a-zA-ZÀ-ÿ]+$/.test(stringTestada);
 }
 
@@ -31,7 +31,7 @@ function validaString(stringTestada : string): boolean {
  * @param palavra - A palavra na qual contar as vogais.
  * @returns O número de vogais na palavra fornecida.
  */
-function contaVogais(palavra: string): number{
+export function contaVogais(palavra: string): number{
     const vogaisBase: string = "AÁÂÃEÉÊIÍÎOÓÔÕUÚÛ"
     let contador: number = 0
 
@@ -43,17 +43,20 @@ function contaVogais(palavra: string): number{
     return contador
 }
 
-//cenario a)
-const palavraPreDefinida: string = "Liara"
-const vogaisContadas: number = contaVogais(palavraPreDefinida)
-imprimeResultado(palavraPreDefinida, vogaisContadas)
-
-//cenario b) 
-let palavraInput: string
-
-do {
-    palavraInput = prompt("Digite a palavra a ser contada: ") || ""
-} while(!validaString(palavraInput))
-
-let vogaisContadasInput = contaVogais(palavraInput)
-imprimeResultado(palavraInput, vogaisContadasInput)
+/*
+* Seção de demonstraçoes
+* cenario a)
+* const palavraPreDefinida: string = "Liara"
+* const vogaisContadas: number = contaVogais(palavraPreDefinida)
+* imprimeResultado(palavraPreDefinida, vogaisContadas)
+* 
+* cenario b) 
+* let palavraInput: string
+*
+* do {
+*    palavraInput = prompt("Digite a palavra a ser contada: ") || ""
+* } while(!validaString(palavraInput))
+*
+* let vogaisContadasInput = contaVogais(palavraInput)
+* imprimeResultado(palavraInput, vogaisContadasInput)
+*/
